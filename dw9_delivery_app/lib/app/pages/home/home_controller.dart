@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 
 import 'package:dw9_delivery_app/app/pages/home/home_state.dart';
@@ -16,9 +18,13 @@ class HomeController extends Cubit<HomeState> {
     try {
       await Future.delayed(const Duration(seconds: 3));
       final products = await _productsRepository.findAllProducts();
+      //throw Exception();
       emit(state.copyWith(status: HomeStateStatus.loaded, products: products));
-    } on Exception catch (e) {
-      // TODO
+    } catch (e, s) {
+      log('Erro ao buscar produtos', error: e, stackTrace: s);
+      emit(state.copyWith(
+          status: HomeStateStatus.error,
+          errorMessage: 'Erro ao buscar produtos'));
     }
   }
 }
