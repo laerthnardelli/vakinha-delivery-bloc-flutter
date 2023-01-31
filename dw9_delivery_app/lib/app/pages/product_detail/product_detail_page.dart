@@ -2,13 +2,24 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dw9_delivery_app/app/core/ui/helpers/size_extensions.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_appbar.dart';
+import 'package:dw9_delivery_app/app/pages/product_detail/product_detail_controller.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/ui/base_state/base_state.dart';
 import '../../core/ui/widgets/delivery_increment_decrement_button.dart';
+import '../../models/product_model.dart';
 
-class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key});
+class ProductDetailPage extends StatefulWidget {
+  final ProductModel product;
 
+  const ProductDetailPage({super.key, required this.product});
+
+  @override
+  State<ProductDetailPage> createState() => _ProductDetailPageState();
+}
+
+class _ProductDetailPageState
+    extends BaseState<ProductDetailPage, ProductDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
