@@ -48,13 +48,20 @@ class ProductDetailPage extends StatelessWidget {
           ),
           const Divider(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 width: context.percentWidth(.5),
                 height: 68,
                 padding: const EdgeInsets.all(8),
-                child: const DeliveryIncrementDecrementButton(),
+                child: DeliveryIncrementDecrementButton(
+                  incrementTap: () {
+                    print('increment');
+                  },
+                  decrementTap: () {
+                    print('decrement');
+                  },
+                  amout: 1,
+                ),
               ),
               Container(
                 width: context.percentWidth(.5),
@@ -72,10 +79,11 @@ class ProductDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: AutoSizeText(r'R$ 600,99',
+                        child: AutoSizeText(r'R$ 60,99',
                             maxFontSize: 13,
                             minFontSize: 5,
                             maxLines: 1,
+                            textAlign: TextAlign.center,
                             style: context.textStyles.textExtraBold),
                       ),
                     ],
