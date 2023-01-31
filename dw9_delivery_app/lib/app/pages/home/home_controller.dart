@@ -16,7 +16,7 @@ class HomeController extends Cubit<HomeState> {
     emit(state.copyWith(status: HomeStateStatus.loading));
 
     try {
-      await Future.delayed(const Duration(seconds: 3));
+      //await Future.delayed(const Duration(seconds: 3));
       final products = await _productsRepository.findAllProducts();
       //throw Exception();
       emit(state.copyWith(status: HomeStateStatus.loaded, products: products));
