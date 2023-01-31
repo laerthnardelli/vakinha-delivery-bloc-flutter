@@ -12,7 +12,9 @@ class DeliveryProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await Navigator.of(context).pushNamed('/productDetail');
+        await Navigator.of(context).pushNamed('/productDetail', arguments: {
+          'product': product,
+        });
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
