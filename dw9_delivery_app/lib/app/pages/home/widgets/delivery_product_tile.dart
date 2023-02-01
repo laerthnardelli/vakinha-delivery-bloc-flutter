@@ -1,6 +1,7 @@
 import 'package:dw9_delivery_app/app/core/extencions/formater_extension.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/colors_app.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
+import 'package:dw9_delivery_app/app/dto/order_product_dto.dart';
 import 'package:dw9_delivery_app/app/models/product_model.dart';
 import 'package:dw9_delivery_app/app/pages/home/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class DeliveryProductTile extends StatelessWidget {
         });
 
         if (orderProduct != null) {
-          controller.addOrUpdateBag(orderProduct);
+          controller.addOrUpdateBag(orderProduct as OrderProductDto);
         }
       },
       child: Padding(
