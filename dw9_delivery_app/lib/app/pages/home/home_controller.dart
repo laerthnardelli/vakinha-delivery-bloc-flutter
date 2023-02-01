@@ -27,4 +27,6 @@ class HomeController extends Cubit<HomeState> {
           errorMessage: 'Erro ao buscar produtos'));
     }
   }
+
+  void addOrUpdateBag(Object orderProduct) {}
 }
