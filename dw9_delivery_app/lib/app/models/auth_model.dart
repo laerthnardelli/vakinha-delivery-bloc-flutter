@@ -10,15 +10,15 @@ class AuthModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'accessToken': accessToken,
-      'refreshToken': refreshToken,
+      'access_token': accessToken,
+      'refresh_token': refreshToken,
     };
   }
 
   factory AuthModel.fromMap(Map<String, dynamic> map) {
     return AuthModel(
-      accessToken: map['accessToken'] ?? '',
-      refreshToken: map['refreshToken'] ?? '',
+      accessToken: map['access_token'] ?? '',
+      refreshToken: map['refresh_token'] ?? '',
     );
   }
 
