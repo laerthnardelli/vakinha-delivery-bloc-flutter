@@ -1,3 +1,4 @@
+import 'package:dw9_delivery_app/app/core/extencions/formater_extension.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_button.dart';
@@ -109,10 +110,15 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                             style: context.textStyles.textExtraBold
                                 .copyWith(fontSize: 16),
                           ),
-                          Text(
-                            r'R$ 200,00',
-                            style: context.textStyles.textExtraBold
-                                .copyWith(fontSize: 16),
+                          BlocSelector<OrderController, OrderState, double>(
+                            selector: (state) => state.totalOrder,
+                            builder: (context, totalOrder) {
+                              return Text(
+                                totalOrder.currencyPTBR,
+                                style: context.textStyles.textExtraBold
+                                    .copyWith(fontSize: 16),
+                              );
+                            },
                           ),
                         ],
                       ),
