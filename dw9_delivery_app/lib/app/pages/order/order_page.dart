@@ -2,6 +2,7 @@ import 'package:dw9_delivery_app/app/core/extencions/formater_extension.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_button.dart';
+import 'package:dw9_delivery_app/app/dto/order_dto.dart';
 import 'package:dw9_delivery_app/app/dto/order_product_dto.dart';
 import 'package:dw9_delivery_app/app/models/payment_type_model.dart';
 import 'package:dw9_delivery_app/app/pages/order/order_controller.dart';
@@ -92,6 +93,13 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
               showInfo(
                   'Sua sacola está vazia, por favor selecione um produto para realizar seu pedido');
               Navigator.pop(context, <OrderProductDto>[]);
+            },
+            success: () {
+              hideLoader();
+              Navigator.of(context).popAndPushNamed(
+                '/order/completed',
+                result: <OrderProductDto>[],
+              );
             });
       },
       child: WillPopScope(
@@ -229,7 +237,13 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                                 formKey.currentState?.validate() ?? false;
                             final paymentTypeSelected = paymentTypeId != null;
                             paymentTypeValid.value = paymentTypeSelected;
-                            if (valid) {}
+                            if (valid && paymentTypeSelected) {
+                              controller.saveOrder(
+                                address: addressEC.text,
+                                document: documentEC.text,
+                                paymentMethodId: paymentTypeId!,
+                              );
+                            }
                           },
                         ),
                       )
