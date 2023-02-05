@@ -3,6 +3,7 @@ import 'package:dw9_delivery_app/app/pages/home/home_controller.dart';
 import 'package:dw9_delivery_app/app/pages/home/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/ui/widgets/delivery_appbar.dart';
 import 'widgets/delivery_product_tile.dart';
@@ -26,6 +27,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
 
   @override
   void onReady() {
+    //SharedPreferences.getInstance().then((value) => value.clear());
     controller.loadProducts();
     super.onReady();
   }
